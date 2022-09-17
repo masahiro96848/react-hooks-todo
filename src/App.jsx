@@ -1,17 +1,18 @@
 import React, { useState } from "react";
+import { AddTodo } from "./components/AddTodo";
 import './index.css'
 
 export const App = () => {
     const [todo, setTodo] = useState('')
     const [todoList, setTodoList] = useState(['カフェに行く', '筋トレをする'])
 
-    const handleNewTask = (event) => {
+    const handleAddTodo = (event) => {
         setTodo(event.target.value)
     }
     const handleSubmit = (event) => {
         event.preventDefault()
         if (todo === '') return
-        setTodoList(todos => [...todoList, todo])
+        setTodoList([...todoList, todo])
         setTodo('')
     }
     const deleteTodo = (index) => {
@@ -23,19 +24,11 @@ export const App = () => {
         <>
             <div className="container">
                 <h1 className="title">Todo List</h1>
-                <section className="container-area">
-                    <div>
-                        <form action="" onSubmit={handleSubmit}>
-                            <input 
-                                className="input-area" 
-                                placeholder="Todoを追加" 
-                                value={todo}
-                                onChange={handleNewTask}
-                                type="text"
-                            />
-                        </form>
-                    </div>
-                </section>
+                <AddTodo
+                    todo={todo}
+                    handleAddTodo={handleAddTodo}
+                    handleSubmit={handleSubmit}
+                />
                 <section className="container-area">
                     <div>
                         <input className="input-area" placeholder="キーワードを検索" type="text" />
