@@ -2,17 +2,22 @@ import React, { useState } from "react";
 import './index.css'
 
 export const App = () => {
-    const [task, setTask] = useState('')
-    const [todos, setTodos] = useState(['カフェに行く', '筋トレをする'])
+    const [todo, setTodo] = useState('')
+    const [todoList, setTodoList] = useState(['カフェに行く', '筋トレをする'])
 
     const handleNewTask = (event) => {
-        setTask(event.target.value)
+        setTodo(event.target.value)
     }
     const handleSubmit = (event) => {
         event.preventDefault()
-        if (task === '') return
-        setTodos(todos => [...todos, task])
-        setTask('')
+        if (todo === '') return
+        setTodoList(todos => [...todoList, todo])
+        setTodo('')
+    }
+    const deleteTodo = (index) => {
+        const todo = [...todoList]
+        todo.splice(index, 1)
+        setTodoList(todo)
     }
     return (
         <>
@@ -24,7 +29,7 @@ export const App = () => {
                             <input 
                                 className="input-area" 
                                 placeholder="Todoを追加" 
-                                value={task}
+                                value={todo}
                                 onChange={handleNewTask}
                                 type="text"
                             />
@@ -38,12 +43,12 @@ export const App = () => {
                 </section>
                 <section className="container-area">
                     <div>
-                        {todos.map((todo) => {
+                        {todoList.map((todo, index) => {
                             return (
                                 <ul key={todo} className="list-row">
                                     <li className="list">
                                         <span className="item">{todo}</span>
-                                        <i className="fa fa-trash" aria-hidden="true"></i>
+                                        <i onClick={() => deleteTodo(index)} className="fa fa-trash" aria-hidden="true"></i>
                                     </li>
                                 </ul>
                             )
