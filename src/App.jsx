@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import './index.css'
 
 export const App = () => {
+    const [todo, setTodo] = useState(['カフェに行く', '筋トレをする'])
     return (
         <>
             <div className="container">
@@ -18,20 +19,16 @@ export const App = () => {
                 </section>
                 <section className="container-area">
                     <div>
-                        <ul className="list-row">
-                            <li className="list">
-                                <span className="item">テスト1</span>
-                                <i className="fa fa-trash" aria-hidden="true"></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul className="list-row">
-                            <li className="list">
-                                <span className="item">テスト2</span>
-                                <i className="fa fa-trash" aria-hidden="true"></i>
-                            </li>
-                        </ul>
+                        {todo.map((todo) => {
+                            return (
+                                <ul key={todo} className="list-row">
+                                    <li className="list">
+                                        <span className="item">{todo}</span>
+                                        <i className="fa fa-trash" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
+                            )
+                        })}
                     </div>
                 </section>
             </div>
