@@ -6,7 +6,7 @@ export const TodoItem = (props) => {
         <div className="list-item">   
             <span className="item">{todo}</span>
             <i className="fas fa-pen-square fa-lg"></i>
-            <i onClick={() => handleDelete(todo.id)} className="fa fa-trash fa-lg" aria-hidden="true"></i>
+            <i onClick={() => handleDelete(todo)} className="fa fa-trash fa-lg" aria-hidden="true"></i>
         </div>
         
     )

@@ -15,13 +15,14 @@ export const App = () => {
         event.preventDefault()
         if (todo !== '') {
             setTodoList([{ id: `${todo}-${Date.now()}`, todo }, ...todoList]);
-
+            setTodoList([...todoList, todo])
+            setTodo('')
+        } else {
+            return
         }
-        setTodoList([...todoList, todo])
-        setTodo('')
     }
     const handleDelete = (id) => {
-        const delTodo = todoList.filter((todo) => todo.id !== id);
+        const delTodo = todoList.filter((todo) => todo !== id);
         setTodoList([...delTodo]);
         
     }
