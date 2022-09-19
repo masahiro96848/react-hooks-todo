@@ -36,8 +36,6 @@ body {
 }
 
 .list-row {
-  display: flex;
-  align-items: center;
   padding: 0;
   position: relative;
 }
@@ -53,7 +51,9 @@ body {
   border-radius: 8px;
   border: none;
   padding: 20px 8px;
+  margin-bottom: 20px;
 }
+
 
 .item {
   cursor: pointer;
@@ -63,15 +63,15 @@ body {
 
 .fa-pen-square {
   position: absolute;
-  top: 25px;
   right: 60px;
   cursor: pointer;
+  margin-top: 5px;
 }
 
 .fa-trash {
   position: absolute;
-  top: 25px;
   right: 10px;
   width: 30px;
   cursor: pointer;
+  margin-top: 5px;
 }

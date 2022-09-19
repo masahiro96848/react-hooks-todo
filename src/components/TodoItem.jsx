@@ -1,12 +1,13 @@
 import React from "react";
 
 export const TodoItem = (props) => {
-    const { todo, index, deleteTodo } = props
+    const { todo, handleDelete } = props
     return (
-        <li className="list">
+        <div className="list-item">   
             <span className="item">{todo}</span>
             <i className="fas fa-pen-square fa-lg"></i>
-            <i onClick={() => deleteTodo(index)} className="fa fa-trash fa-lg" aria-hidden="true"></i>
-        </li>
+            <i onClick={() => handleDelete(todo.id)} className="fa fa-trash fa-lg" aria-hidden="true"></i>
+        </div>
+        
     )
 }

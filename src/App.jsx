@@ -13,15 +13,19 @@ export const App = () => {
     }
     const handleSubmit = (event) => {
         event.preventDefault()
-        if (todo === '') return
+        if (todo !== '') {
+            setTodoList([{ id: `${todo}-${Date.now()}`, todo }, ...todoList]);
+
+        }
         setTodoList([...todoList, todo])
         setTodo('')
     }
-    const deleteTodo = (index) => {
-        const todo = [...todoList]
-        todo.splice(index, 1)
-        setTodoList(todo)
+    const handleDelete = (id) => {
+        const delTodo = todoList.filter((todo) => todo.id !== id);
+        setTodoList([...delTodo]);
+        
     }
+    
     return (
         <>
             <div className="container">
@@ -38,7 +42,7 @@ export const App = () => {
                 </section>
                 <TodoList
                     todoList={todoList}
-                    deleteTodo={deleteTodo}
+                    handleDelete={handleDelete}
                 />
             </div>
         </>

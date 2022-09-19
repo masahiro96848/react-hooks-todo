@@ -2,21 +2,22 @@ import React from "react";
 import { TodoItem } from "./TodoItem";
 
 export const TodoList = (props) => {
-    const { todoList, deleteTodo } = props
+    const { todoList, handleDelete } = props
     return (
         <section className="container-area">
             <div>
-                {todoList.map((todo, index) => {
-                    return (
-                        <ul key={todo} className="list-row">
+                <ul className="list-row">
+                    {todoList.map((todo) => {
+                        return (
+                        <li className="list" key={todo}>
                             <TodoItem 
                                 todo={todo}
-                                index={index}
-                                deleteTodo={deleteTodo}
+                                handleDelete={handleDelete}
                             />
-                        </ul>
-                    )
-                })}
+                        </li>
+                        )
+                    })}
+                </ul>
             </div>
         </section>
     )
