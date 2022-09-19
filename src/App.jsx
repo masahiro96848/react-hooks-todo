@@ -6,22 +6,28 @@ import './index.css'
 
 export const App = () => {
     const [todo, setTodo] = useState('')
-    const [todoList, setTodoList] = useState([])
+    const [todoList, setTodoList] = useState(['テスト1', 'テスト2'])
 
     const handleAddTodo = (event) => {
         setTodo(event.target.value)
     }
     const handleSubmit = (event) => {
         event.preventDefault()
-        if (todo === '') return
-        setTodoList([...todoList, todo])
-        setTodo('')
+        if (todo !== '') {
+            setTodoList([{ id: `${todo}-${Date.now()}`, todo }, ...todoList]);
+            setTodoList([...todoList, todo])
+            setTodo('')
+        } else {
+            return
+        }
     }
-    const deleteTodo = (index) => {
-        const todo = [...todoList]
-        todo.splice(index, 1)
-        setTodoList(todo)
+    const handleDelete = (index) => {
+        const newTodos = [...todoList]
+        newTodos.splice(index, 1)
+        setTodoList(newTodos)
+        
     }
+    
     return (
         <>
             <div className="container">
@@ -38,7 +44,7 @@ export const App = () => {
                 </section>
                 <TodoList
                     todoList={todoList}
-                    deleteTodo={deleteTodo}
+                    handleDelete={handleDelete}
                 />
             </div>
         </>
