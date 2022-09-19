@@ -21,9 +21,10 @@ export const App = () => {
             return
         }
     }
-    const handleDelete = (id) => {
-        const delTodo = todoList.filter((todo) => todo !== id);
-        setTodoList([...delTodo]);
+    const handleDelete = (index) => {
+        const newTodos = [...todoList]
+        newTodos.splice(index, 1)
+        setTodoList(newTodos)
         
     }
     
