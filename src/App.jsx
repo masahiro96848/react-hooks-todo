@@ -6,7 +6,7 @@ import './index.css'
 
 export const App = () => {
     const [todo, setTodo] = useState('')
-    const [todoList, setTodoList] = useState([])
+    const [todoList, setTodoList] = useState(['テスト1', 'テスト2'])
 
     const handleAddTodo = (event) => {
         setTodo(event.target.value)

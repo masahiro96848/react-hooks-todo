@@ -1,4 +1,5 @@
 import React from "react";
+import { TodoItem } from "./TodoItem";
 
 export const TodoList = (props) => {
     const { todoList, deleteTodo } = props
@@ -8,10 +9,11 @@ export const TodoList = (props) => {
                 {todoList.map((todo, index) => {
                     return (
                         <ul key={todo} className="list-row">
-                            <li className="list">
-                                <span className="item">{todo}</span>
-                                <i onClick={() => deleteTodo(index)} className="fa fa-trash" aria-hidden="true"></i>
-                            </li>
+                            <TodoItem 
+                                todo={todo}
+                                index={index}
+                                deleteTodo={deleteTodo}
+                            />
                         </ul>
                     )
                 })}
