@@ -61,6 +61,13 @@ body {
   margin-top: 8px;
 }
 
+.fa-pen-square {
+  position: absolute;
+  top: 25px;
+  right: 60px;
+  cursor: pointer;
+}
+
 .fa-trash {
   position: absolute;
   top: 25px;

@@ -5,7 +5,8 @@ export const TodoItem = (props) => {
     return (
         <li className="list">
             <span className="item">{todo}</span>
-            <i onClick={() => deleteTodo(index)} className="fa fa-trash" aria-hidden="true"></i>
+            <i className="fas fa-pen-square fa-lg"></i>
+            <i onClick={() => deleteTodo(index)} className="fa fa-trash fa-lg" aria-hidden="true"></i>
         </li>
     )
 }
