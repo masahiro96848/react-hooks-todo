@@ -7,13 +7,12 @@ export const TodoList = (props) => {
         <section className="container-area">
             <div>
                 <ul className="list-row">
-                    {todoList.map((todo, index) => {
+                    {todoList.map((todo) => {
                         return (
-                        <li className="list" key={index}>
+                        <li key={todo.id} className="list" >
                             <TodoItem 
-                                todo={todo}
-                                index={index}
-                                handleDelete={handleDelete}
+                                todo={todo.text}
+                                
                             />
                         </li>
                         )

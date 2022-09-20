@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { AddTodo } from "./components/AddTodo";
-import { TodoList } from "./components/TodoList";
-
 import './index.css'
 
-export const App = () => {
-    const [todo, setTodo] = useState('')
-    const [todoList, setTodoList] = useState(['テスト1', 'テスト2'])
+export const App = ()  => {
+    const [todo, setTodo] = useState('');
+    const [todos, setTodos] = useState([])
+    const [editTodo, setEditTodo] = useState(false)
+    const [currentTodo, setCurrentTodo] = useState({})
 
     const handleAddTodo = (event) => {
         setTodo(event.target.value)
@@ -14,18 +14,11 @@ export const App = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         if (todo !== '') {
-            setTodoList([{ id: `${todo}-${Date.now()}`, todo }, ...todoList]);
-            setTodoList([...todoList, todo])
+            setTodos([...todos, { id: new Date(), text: todo.trim()}]);
             setTodo('')
         } else {
             return
         }
-    }
-    const handleDelete = (index) => {
-        const newTodos = [...todoList]
-        newTodos.splice(index, 1)
-        setTodoList(newTodos)
-        
     }
     
     return (
@@ -37,15 +30,17 @@ export const App = () => {
                     handleAddTodo={handleAddTodo}
                     handleSubmit={handleSubmit}
                 />
-                <section className="container-area">
-                    <div>
-                        <input className="input-area" placeholder="キーワードを検索" type="text" />
-                    </div>
-                </section>
-                <TodoList
-                    todoList={todoList}
-                    handleDelete={handleDelete}
-                />
+            <section className="container-area">
+                <div>
+                    <ul className="list-row">
+                        {todos.map((todo) => {
+                            return (
+                            <li key={todo.id} className="list" >{todo.text}</li>
+                            )
+                        })}
+                    </ul>
+                </div>
+            </section>
             </div>
         </>
     )
