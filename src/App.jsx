@@ -1,4 +1,5 @@
-import React, { useState, useEffect} from "react";
+import React, { useState} from "react";
+import { TodoItem } from "./components/TodoItem";
 import './index.css'
 
 export const App = ()  => {
@@ -79,20 +80,11 @@ export const App = ()  => {
                     </div>
                     )}
                 </section>
-                <section className="container-area">
-                    <div>
-                        <ul className="list-row">
-                            {todos.map((todo) => {
-                                return (
-                                <li key={todo.id} className="list" >{todo.text}
-                                <i onClick={() => handleEditClick(todo)} className="fas fa-pen-square fa-lg"></i>
-                                <i onClick={() => handleDelete(todo.id)} className="fa fa-trash fa-lg" aria-hidden="true"></i>
-                                </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                </section>
+                <TodoItem
+                    todos={todos}
+                    handleEditClick={handleEditClick}
+                    handleDelete={handleDelete}
+                />
             </div>
         </>
     )
