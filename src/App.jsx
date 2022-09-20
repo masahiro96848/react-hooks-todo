@@ -1,5 +1,6 @@
 import React, { useState} from "react";
 import { TodoItem } from "./components/TodoItem";
+import { AddTodo } from "./components/AddTodo";
 import './index.css'
 
 export const App = ()  => {
@@ -67,17 +68,11 @@ export const App = ()  => {
                             <button onClick={() => setIsEditing(false)}>キャンセル</button>
                         </form>
                     ): (
-                    <div>
-                        <form action="" onSubmit={handleSubmit}>
-                            <input
-                                className="input-area" 
-                                placeholder="Todoを追加" 
-                                value={todo}
-                                onChange={handleAddTodo}
-                                type="text"
-                            />
-                        </form>
-                    </div>
+                    <AddTodo 
+                        todo={todo}
+                        handleSubmit={handleSubmit}
+                        handleAddTodo={handleAddTodo}
+                    />
                     )}
                 </section>
                 <TodoItem
