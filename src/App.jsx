@@ -20,6 +20,13 @@ export const App = ()  => {
             return
         }
     }
+    const handleDelete = (id) => {
+        const removeItem = todos.filter((todo) => {
+            return todo.id !== id
+        })
+
+        setTodos(removeItem)
+    }
     
     return (
         <>
@@ -35,7 +42,10 @@ export const App = ()  => {
                     <ul className="list-row">
                         {todos.map((todo) => {
                             return (
-                            <li key={todo.id} className="list" >{todo.text}</li>
+                            <li key={todo.id} className="list" >{todo.text}
+                            <i className="fas fa-pen-square fa-lg"></i>
+                            <i onClick={() => handleDelete(todo.id)} className="fa fa-trash fa-lg" aria-hidden="true"></i>
+                            </li>
                             )
                         })}
                     </ul>
