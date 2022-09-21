@@ -7,6 +7,7 @@ export const App = ()  => {
     const [todo, setTodo] = useState('');
     const [todos, setTodos] = useState([])
     const [isEditing, setIsEditing] = useState(false)
+    const [editId, setEditId] = useState(0)
     const [currentTodo, setCurrentTodo] = useState({})
 
     const handleAddTodo = (event) => {
@@ -28,13 +29,36 @@ export const App = ()  => {
 
         setTodos(removeItem)
     }
+
+    const handleEdit = (id, value) => {
+        const newTodos = todos.map((todo, index) => {
+            if (index === id) {
+                todo.text = value
+            }
+            return todo
+        })
+        setTodos(newTodos)
+    }
+
     const handleEditInputChange = (event) => {
         setCurrentTodo({ ...currentTodo, text: event.target.value })
         console.log(currentTodo)
     }
-    const handleEditClick = (todo) => {
-        setIsEditing(true)
-        setCurrentTodo({ ...todo })
+
+    const handleEditTodo = (event) => {
+        if (event.key === 'Enter' && todo !== "") {
+            setTodo(event.target.value)
+        }
+    }
+
+    const handleEditClick = (id, value) => {
+         const newTodos = todos.map((todo, index) => {
+            if (index === id) {
+                todo.text = value
+            }
+            return todo
+        })
+        setTodos(newTodos)
     }
     const handleUpdateTodo = (id, updateTodo) => {
         const updateItem = todos.map((todo) => {
@@ -56,7 +80,6 @@ export const App = ()  => {
                 <section className="container-area">
                     {isEditing ? (
                         <form onSubmit={handleEditFormSubmit}>
-                            <h2>Edit Todo</h2>
                             <input 
                                 type="text" 
                                 name="editTodo"
@@ -78,6 +101,7 @@ export const App = ()  => {
                 <TodoItem
                     todos={todos}
                     handleEditClick={handleEditClick}
+                    handleEditTodo={handleEditTodo}
                     handleDelete={handleDelete}
                 />
             </div>
