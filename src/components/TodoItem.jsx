@@ -1,13 +1,24 @@
 import React from "react";
 
 export const TodoItem = (props) => {
-    const { todo, index, handleDelete } = props
+    const { todos, handleEditClick, handleEditTodo, handleDelete } = props
     return (
-        <div className="list-item">   
-            <span className="item">{todo}</span>
-            <i className="fas fa-pen-square fa-lg"></i>
-            <i onClick={() => handleDelete(index)} className="fa fa-trash fa-lg" aria-hidden="true"></i>
-        </div>
-        
+        <section className="container-area">
+            <ul className="list-row">
+                {todos.map((todo, index) => {
+                    return (
+                    <li key={todo.id} className="list" >
+                        <input 
+                            className="edit-input" 
+                            type="text" 
+                            value={todo.text} 
+                            onChange={(event) => handleEditClick(index , event.target.value)}
+                        />
+                        <i onClick={() => handleDelete(todo.id)} className="fa fa-trash fa-lg" aria-hidden="true"></i>
+                    </li>
+                    )
+                })}
+            </ul>
+        </section>
     )
 }
