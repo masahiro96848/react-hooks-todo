@@ -1,7 +1,7 @@
 import React from "react";
 
 export const TodoItem = (props) => {
-    const { todos, handleEditClick, handleEditTodo, handleDelete } = props
+    const { todos, handleEditClick, handleDelete } = props
     return (
         <section className="container-area">
             <ul className="list-row">
