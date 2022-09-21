@@ -1,5 +1,6 @@
 {
   "name": "react-turorial",
+  "homepage": "https://masahiro96848.github.io/react-hooks-todo/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,7 +20,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://masahiro96848.github.io/react-hooks-todo/",
   "eslintConfig": {
     "extends": [
       "react-app",
