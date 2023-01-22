@@ -10,13 +10,13 @@ export const App = () => {
     const [addInputValue, setAddInputValue] = useState('')
     const [uniqueId, setUniqueId] = useState(INIT_UNIQUE_ID)
     const [searchKeyword, setSearchKeyword] = useState('')
-    // const showTodoList = useMemo(() => {
-    //     return originTodoList.filter((todo) => {
-    //         // 検索キーワードに部分一致したTodoだけを一覧表示する
-    //         const regexp = new RegExp('^' + searchKeyword, 'i')
-    //         return todo.title.match(regexp)
-    //     })
-    // }, [originTodoList, searchKeyword])
+    const showTodoList = useMemo(() => {
+        return originTodoList.filter((todo) => {
+            // 検索キーワードに部分一致したTodoだけを一覧表示する
+            const regexp = new RegExp('^' + searchKeyword, 'i')
+            return todo.text.match(regexp)
+        })
+    }, [originTodoList, searchKeyword])
 
     // addInputValueの変更処理
     const onChangeAddInputValue = (e) => setAddInputValue(e.target.value)
@@ -51,6 +51,9 @@ export const App = () => {
         setOriginTodoList(newTodoList)
     }
 
+    /** キーワード検索処理 */
+    const handleChangeSearchKeyword = (e) => setSearchKeyword(e.target.value)
+
     return (
         <>
             <div className="container">
@@ -64,10 +67,14 @@ export const App = () => {
                 </section>
                 {/* Todo検索フォームエリア */}
                 <section className="container-area">
-                    <InputForm placeholder={'キーワード検索'} />
+                    <InputForm
+                        inputValue={searchKeyword}
+                        placeholder={'キーワード検索'}
+                        handleChangeValue={handleChangeSearchKeyword}
+                    />
                 </section>
                 <TodoItem
-                    todos={originTodoList}
+                    todos={showTodoList}
                     handleDelete={handleDeleteTodo}
                 />
             </div>
