@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 
 export const AddTodo = (props) => {
-    const { todo, handleSubmit, handleAddTodo} = props
+    const { addInputValue, handleAddTodo, handleSubmit } = props
     return (
         <form action="" onSubmit={handleSubmit}>
             <input
-                className="input-area" 
-                placeholder="Todoを追加" 
-                value={todo}
+                className="input-area"
+                placeholder="Todoを追加"
+                value={addInputValue}
                 onChange={handleAddTodo}
                 type="text"
             />
