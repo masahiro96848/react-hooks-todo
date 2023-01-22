@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+import { InputForm } from './components/InputForm'
 import { TodoItem } from './components/TodoItem'
 import { AddTodo } from './components/AddTodo'
 import { INIT_TODO_LIST, INIT_UNIQUE_ID } from './constants/data'
@@ -60,6 +61,10 @@ export const App = () => {
                         handleAddTodo={onChangeAddInputValue}
                         handleSubmit={handleAddTodo}
                     />
+                </section>
+                {/* Todo検索フォームエリア */}
+                <section className="container-area">
+                    <InputForm placeholder={'キーワード検索'} />
                 </section>
                 <TodoItem
                     todos={originTodoList}
